@@ -1,7 +1,7 @@
 #!/bin/bash
 
 service mysql start &&
-mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');flush privileges;update mysql.user set plugin=null where user='root';flush privileges" && mysql -u root -proot -e "source /opt/GLPI.sql"
+mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');flush privileges;update mysql.user set plugin=null where user='root';flush privileges" && mysql -u root -proot -e "source /opt/GLPI.sql" && service apache2 start
 
 status=$(pgrep mysqld)
 if [ -z "$status" ]; then
