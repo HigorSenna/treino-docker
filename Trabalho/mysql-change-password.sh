@@ -1,0 +1,1 @@
+echo "Iniciando modificacao de senha" && mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');flush privileges;update mysql.user set plugin=null where user='root';flush privileges"
