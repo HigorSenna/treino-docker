@@ -7,9 +7,5 @@ ADD mysql-start.sh /bin/mysql-start.sh
 
 RUN chmod a+x /bin/mysql-start.sh
 
-ADD mysql-change-password.sh /bin/mysql-change-password.sh
-
-#RUN chmod a+x /bin/mysql-change-password.sh
-
 CMD mysql-start.sh
 
