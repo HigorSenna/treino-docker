@@ -1,0 +1,10 @@
+RUN CONTAINER IN BACKGROUND 
+
+docker container run -d --name trabalho-barbara debian:barbara .
+
+ENTRAR NO CONTAINER
+
+docker container exec -it trabalho-barbara bash
+
+mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');flush privileges;update mysql.user set plugin=null where user='root'; //com o plugin habilitado, nao adianta trocar a senha flush privileges;"
+
