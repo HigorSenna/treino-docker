@@ -40,13 +40,13 @@ if (!defined('GLPI_ROOT')) {
 class DBmysql {
 
    //! Database Host - string or Array of string (round robin)
-   public $dbhost             = "";
+   public $dbhost             = "localhost";
    //! Database User
-   public $dbuser             = "";
+   public $dbuser             = "root";
    //! Database Password
-   public $dbpassword         = "";
+   public $dbpassword         = "root";
    //! Default Database
-   public $dbdefault          = "";
+   public $dbdefault          = "GLPI";
    //! Database Handler
    private $dbh;
    //! Database Error

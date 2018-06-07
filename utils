@@ -1,10 +1,34 @@
 RUN CONTAINER IN BACKGROUND 
 
-docker container run -d --name trabalho-barbara debian:barbara .
+DENTRO DA PASTA Trabalho
+sudo chmod -R 777 glpi/   // chmod permite dar permissao para pastas/arquivos no linux
+                          // -R significa que estou dando permissao recursiva, ou seja, para arquivos, pastas e subpastas localizdas dentro de 				  //glpi
+                          // 777 significa que qualquer tem todas as permissoes na estrutura glpi (nao é o correto, em um ambiente real de 				  //produçao, o certo seria limitar as permissoes de acordo com o usuario)
 
-ENTRAR NO CONTAINER
+
+DEPOIS AINDA DENTRO DA PASTA TRABALHO
+
+docker image run -t debian:9 .   //construindo a imagem a partir do docker file localizado na mesma pasta(por isso colocamos o '.' )
+                                 // -t siginifica que a imagem será referenciada pela tag debian:9
+
+O COMANDO DEVE SER EXECUTADO DENTRO DA pasta Trabalho
+docker container run -d --name trabalho-barbara -p 80:80 -v $(pwd)/glpi:/var/www/html -v $(pwd)/mysql:/var/lib/mysql debian:9
+
+//-d significa que o container vai rodar em background, sem o -d, quando executamos comando, ficamos 'escutando' o bash do container, e quando apertamos CTRL + C para sair do bash, o container é parado.
+
+//-p siginifica que a porta 80 no meu host, ira ser bater na porta 80 do container, que no caso é a do apache
+//-p portahost:portacontainer
+
+//-v siginifica que estou expondo um volume entre host e container, é como se fosse um two way databind do angular 2, so que com pastas, isso 
+//significa que se eu alterar alguma coisa no volume do container, irá reflectir no host e vice versa
+
+ENTRAR NO CONTAINER (esse comando necessita que o container ja esteja rodando) -> esse comando não é necessário para configuração do ambiente, 
+//é apenas para curiosidade caso o usuario queira visualizar dentro do container 
 
 docker container exec -it trabalho-barbara bash
 
-mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('root');flush privileges;update mysql.user set plugin=null where user='root'; //com o plugin habilitado, nao adianta trocar a senha flush privileges;"
+//-it siginifica modo iterativo, ou seja, que nos queremos ver oq acontece no container
+//bash significa que queremos abrir o bash no container
+
+
 
