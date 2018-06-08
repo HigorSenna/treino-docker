@@ -20,7 +20,8 @@ docker container run -d --name trabalho-barbara -p 80:80 -v $(pwd)/glpi:/var/www
 //-p portahost:portacontainer
 
 //-v siginifica que estou expondo um volume entre host e container, é como se fosse um two way databind do angular 2, so que com pastas, isso 
-//significa que se eu alterar alguma coisa no volume do container, irá reflectir no host e vice versa
+//significa que ao iniciar o container, tudo que esta no volume do host, vai para o container, a partir do momento que o container está rodando
+// qualquer alteração feita no volume, reflete no host
 
 ENTRAR NO CONTAINER (esse comando necessita que o container ja esteja rodando) -> esse comando não é necessário para configuração do ambiente, 
 //é apenas para curiosidade caso o usuario queira visualizar dentro do container 
