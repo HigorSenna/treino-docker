@@ -6,7 +6,7 @@ RUN apt update && \
 ADD configurar-servicos.sh /bin/configurar-servicos.sh
 ADD GLPI.sql /opt/GLPI.sql 
 
-RUN chmod a+x /bin/configurar-servicos.sh && chmod a+x /opt/GLPI.sql && chmod -R 777 /var/lib/mysql
+RUN chmod a+x /bin/configurar-servicos.sh && chmod a+x /opt/GLPI.sql && chmod -R 777 /var/lib/mysql && chmod -R 777 /var/www
 
 CMD configurar-servicos.sh
 
